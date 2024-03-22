@@ -72,6 +72,19 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 10,
     },
+    hud: {
+        display: 'flex',
+        backgroundColor: '#F79A24',
+        top: 75,
+        alignItems: 'center',
+        textAlign: 'center',
+        borderRadius: 200,
+        marginLeft: 50,
+        marginRight: 50,
+        padding: 10,
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
 });
 
 export default styles;
