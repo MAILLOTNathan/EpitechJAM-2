@@ -164,6 +164,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent:'space-between',
       padding: 10,
+      color: 'red',
     }
 });
 

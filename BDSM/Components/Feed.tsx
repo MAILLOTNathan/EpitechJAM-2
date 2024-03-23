@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView, Touchable, TouchableOpacity } from "react-native";
 
 import styles from "../styles";
 
@@ -20,21 +20,21 @@ function Post(data) {
 
     return (
         <View style={styles.post}>
-            <Image style={styles.avatar} source={{ uri: picture }}/>
-            <Text>{data.user_name}</Text>
-            <Text>{data.content}</Text>
+            <TouchableOpacity style={styles.mylongbutton}>
+                {/* <Image style={styles.avatar} source={{ uri: picture }}/> */}
+                <Text>{data.user_name}</Text>
+                <Text>{data.content}</Text>
+            </TouchableOpacity>
         </View>
     )
 }
 
 function createFeed (data) {
-    return (
-        <ScrollView>
-            {data.map((item, index) => (
-                <Post key={index} data={item}/>
-            ))}
-        </ScrollView>
+    return data.map((item) => {
+        return (
+            <Post data={item}/>
         )
+    })
 }
 
 
@@ -43,7 +43,11 @@ export default function Feed () {
 
     return (
         <View style={styles.container}>
-            {createFeed(feed)}
+            <View style={styles.notificationpanel}>
+                <ScrollView>
+                    {createFeed(feed)}
+                </ScrollView>
+            </View>
         </View>
     )
 }

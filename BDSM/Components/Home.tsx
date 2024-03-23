@@ -1,70 +1,66 @@
-import { View, Text, TouchableOpacity, Alert, Dimensions, Button } from "react-native"
-import { Camera, CameraType, CameraPictureOptions, CameraOrientation } from 'expo-camera';
+import { View, Text, TouchableOpacity, Alert, Dimensions } from "react-native"
+import { Camera, CameraType, CameraPictureOptions, CameraOrientation, CameraProps } from 'expo-camera';
 
 import styles from "../styles";
-import { StyleSheet } from "react-native";
 import { useEffect, useState } from "react";
 import React from "react";
 
 export default function Home() {
-    const [type, setType] = useState(CameraType.back);
-    const [permission, requestPermission] = Camera.useCameraPermissions();
-  
-    if (!permission) {
-      // Camera permissions are still loading
-      requestPermission();
-      return <View />;
-    }
-  
-    if (!permission.granted) {
-      // Camera permissions are not granted yet
-      return (
-        <View style={styles.container}>
-          <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
-          <Button onPress={requestPermission} title="grant permission" />
-        </View>
-      );
-    }
-  
-    function toggleCameraType() {
-      setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
-    }
-  
-    return (
-      <View style={style.container}>
-        <Camera style={style.camera} type={type}>
-          <View style={style.buttonContainer}>
-            <TouchableOpacity style={style.button} onPress={toggleCameraType}>
-              <Text style={style.text}>Flip Camera</Text>
-            </TouchableOpacity>
-          </View>
-        </Camera>
-      </View>
-    );
-  }
 
-  const style = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-    },
-    camera: {
-      flex: 1,
-    },
-    buttonContainer: {
-      flex: 1,
-      flexDirection: 'row',
-      backgroundColor: 'transparent',
-      margin: 64,
-    },
-    button: {
-      flex: 1,
-      alignSelf: 'flex-end',
-      alignItems: 'center',
-    },
-    text: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      color: 'white',
-    },
-  });
+    let camera: Camera;
+    let cameraOpt: CameraPictureOptions = {};
+    let cameraProps: CameraProps = {};
+
+    async function __takePicture() {
+        cameraProps.onCameraReady = async () => {
+            Camera.isAvailableAsync()
+            let photo = await camera.takePictureAsync(cameraOpt);
+            Alert.alert('Photo', JSON.stringify(photo));
+        }
+    }
+
+    return (
+        <View style={styles.mainView}>
+            <Camera style={styles.childView}
+                ref={(r) => {
+                    if (r !== null)
+                        camera = r
+                }}
+            >
+                <View
+                style={{
+                position: 'absolute',
+                bottom: 0,
+                flexDirection: 'row',
+                flex: 1,
+                paddingBottom: 10,
+                width: '100%',
+                justifyContent: 'space-between'
+                }}
+            >
+                <View
+                style={{
+                alignSelf: 'center',
+                flex: 1,
+                alignItems: 'center'
+                }}
+                >
+                    <TouchableOpacity
+                    onPress={__takePicture}
+                    style={{
+                    width: 70,
+                    height: 70,
+                    bottom: 80,
+                    right: (Dimensions.get('window').width / 4),
+                    borderRadius: 50,
+                    backgroundColor: '#fff',
+                    borderColor: '#F79A24',
+                    borderWidth: 5
+                    }}
+                    />
+                </View>
+                </View>
+            </Camera>
+        </View>
+    )
+}
