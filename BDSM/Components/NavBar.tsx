@@ -1,8 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-
-import { NavigationContainer } from "@react-navigation/native";
+import { TouchableOpacity, View } from 'react-native';
 
 import styles from '../styles';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'

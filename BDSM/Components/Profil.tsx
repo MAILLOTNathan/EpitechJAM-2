@@ -1,6 +1,11 @@
 import React from 'react';
-import { View, Image, Text, Button, Pressable } from 'react-native';
+import { View, Image, Text, Button, TouchableOpacity } from 'react-native';
 import styles from '../styles';
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { faCamera } from '@fortawesome/free-solid-svg-icons';
 
 export default function Profil() {
 
@@ -24,21 +29,28 @@ export default function Profil() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Image style={styles.avatar} source={require("../assets/favicon.png")}/>
-                <View style={styles.info}>
-                    <Text style={styles.name}>{user_name}</Text>
-                    <Text style={styles.username}>{user_tag}</Text>
-                    <Button title="Edit Profile" onPress={() => {}} />
-                </View>
-            </View>
-            <View style={styles.stats}>
-                {stats.map((stat, index) => (
-                    <View style={styles.stat} key={index}>
-                        <Text style={styles.statLabel}>{stat.name}</Text>
-                        <Text style={styles.statValue}>{stat.value}</Text>
+            <View style={styles.profil}>
+                <View style={styles.header}>
+                    <Image style={styles.avatar} source={require("../assets/favicon.png")}/>
+                    <View style={styles.info}>
+                        <Text style={styles.name}>{user_name}</Text>
+                        <Text style={styles.username}>{user_tag}</Text>
+                        <TouchableOpacity style={styles.mylittlebutton}>
+                            <FontAwesomeIcon icon={faPenToSquare} />
+                            <Text>
+                                Edit
+                            </Text>
+                        </TouchableOpacity>
                     </View>
-                ))}
+                </View>
+                <View style={styles.stats}>
+                    {stats.map((stat, index) => (
+                        <View style={styles.stat} key={index}>
+                            <Text style={styles.statLabel}>{stat.name}</Text>
+                            <Text style={styles.statValue}>{stat.value}</Text>
+                        </View>
+                    ))}
+                </View>
             </View>
         </View>
     );

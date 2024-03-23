@@ -1,8 +1,6 @@
 import { View, Text } from "react-native"
 import { Camera } from 'expo-camera';
 
-import Map from "./Map";
-
 import styles from "../styles";
 import { useEffect, useState } from "react";
 import React from "react";
