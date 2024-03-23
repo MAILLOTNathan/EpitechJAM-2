@@ -1,4 +1,4 @@
-import { View, Text } from "react-native"
+import { View, Text, TouchableOpacity } from "react-native"
 import { Camera } from 'expo-camera';
 
 import styles from "../styles";
@@ -32,6 +32,10 @@ export default function Home() {
         <View style={styles.mainView}>
             <Camera style={styles.childView}>
                 <View style={styles.deepView}>
+                    <TouchableOpacity
+                    style={styles.touchStyle}
+                    >
+                    </TouchableOpacity>
                 </View>
             </Camera>
         </View>
