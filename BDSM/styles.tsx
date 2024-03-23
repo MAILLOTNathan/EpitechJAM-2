@@ -164,6 +164,19 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent:'space-between',
       color: 'red',
+      width:(Dimensions.get('window').width - 50),
+      backgroundColor: '#666666',
+      padding: 5,
+      margin: 2,
+    },
+    postimg: {
+      width: (Dimensions.get('window').width - 70),
+      height: (Dimensions.get('window').width - 70),
+    },
+    posttitle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: 'white',
     }
 });
 
