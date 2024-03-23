@@ -158,6 +158,36 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F79A24',
     },
+    CameraPreview: {
+        backgroundColor: 'transparent',
+        flex: 1,
+        width: '100%',
+        height: '100%',
+    },
+    Camera1: {
+        position: 'absolute',
+        bottom: 0,
+        flexDirection: 'row',
+        flex: 1,
+        paddingBottom: 10,
+        width: '100%',
+        justifyContent: 'space-between',
+    },
+    Camera2: {
+        alignSelf: 'center',
+        flex: 1,
+        alignItems: 'center',
+    },
+    TakePics: {
+        width: 70,
+        height: 70,
+        bottom: 80,
+        right: (Dimensions.get('window').width / 4),
+        borderRadius: 50,
+        backgroundColor: '#fff',
+        borderColor: '#F79A24',
+        borderWidth: 5,
+    }
 });
 
 export default styles;
