@@ -37,7 +37,22 @@ export default function Home() {
               source={{uri: photo && photo.uri}}
               style={styles.childView}
             />
-            <Button title={'retake'} onPress={__retakepics} />
+            <TouchableOpacity onPress={__retakepics} style={
+                {
+                    display: 'flex',
+                    flexDirection: 'row',
+                    backgroundColor: '#666666',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginHorizontal: 'auto',
+                    borderRadius: 5,
+                    padding: 10,
+                }
+            }>
+                <Text>
+                    Retake
+                </Text>
+            </TouchableOpacity>
           </View>
         )
       }
