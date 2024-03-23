@@ -13,12 +13,10 @@ export default function Home() {
     let camera: Camera;
 
     async function __takePicture() {
-        camera._onCameraReady = async () => {
-            let photo = await camera.takePictureAsync();
-            console.log(photo);
-            setPreviewVisible(true);
-            setCapturedImage(photo);
-        }
+        let photo = await camera.takePictureAsync();
+        console.log(photo);
+        setPreviewVisible(true);
+        setCapturedImage(photo);
     }
 
     const CameraPreview = ({photo}: any) => {
@@ -45,7 +43,6 @@ export default function Home() {
     return ( previewVisible && capturedImage ? (
         <CameraPreview photo={capturedImage}></CameraPreview> ) : (
         <View style={styles.mainView}>
-            import CameraPreview from "./CameraPreview";
             <Camera style={styles.childView}
                 ref={(r) => {
                     if (r !== null)
