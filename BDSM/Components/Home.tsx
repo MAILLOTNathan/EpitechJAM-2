@@ -20,69 +20,43 @@ export default function Home() {
         setCapturedImage(photo);
     }
 
+    async function __savepics() {
+        console.log('Photo saved')
+    }
+
+    async function __retakepics() {
+        setCapturedImage(null);
+        setPreviewVisible(false);
+    }
+
     const CameraPreview = ({photo}: any) => {
-        console.log('sdsfds', photo)
+        console.log('photo', photo)
         return (
-          <View
-            style={{
-              backgroundColor: 'transparent',
-              flex: 1,
-              width: '100%',
-              height: '100%'
-            }}
-          >
+          <View style={styles.CameraPreview}>
+            <TouchableOpacity style={styles.touchStyle} onPress={__retakepics}/>
             <ImageBackground
               source={{uri: photo && photo.uri}}
-              style={{
-                flex: 1
-              }}
+              style={styles.childView}
             />
           </View>
         )
       }
 
     return ( previewVisible && capturedImage ? (
-        <CameraPreview photo={capturedImage}></CameraPreview> ) : (
+        <CameraPreview photo={capturedImage} savepics={__savepics} retakepics={__retakepics}></CameraPreview> ) : (
         <View style={styles.mainView}>
-            <Camera style={styles.childView}
-                ref={(r) => {
+            <Camera style={styles.childView} ref={(r) => {
                     if (r !== null)
                         camera = r
-                }}
-            >
-                <View
-                style={{
-                position: 'absolute',
-                bottom: 0,
-                flexDirection: 'row',
-                flex: 1,
-                paddingBottom: 10,
-                width: '100%',
-                justifyContent: 'space-between'
-                }}
-            >
-                <View
-                style={{
-                alignSelf: 'center',
-                flex: 1,
-                alignItems: 'center'
-                }}
-                >
+            }}>
+            <View style={styles.Camera1}>
+                <View style={styles.Camera2}>
                     <TouchableOpacity
                     onPress={__takePicture}
-                    style={{
-                    width: 70,
-                    height: 70,
-                    bottom: 80,
-                    right: (Dimensions.get('window').width / 4),
-                    borderRadius: 50,
-                    backgroundColor: '#fff',
-                    borderColor: '#F79A24',
-                    borderWidth: 5
-                    }}
+                    style={styles.TakePics}
                     />
                 </View>
-                </View>
+            </View>
             </Camera>
         </View>
         )

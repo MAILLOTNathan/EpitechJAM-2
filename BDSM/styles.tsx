@@ -158,25 +158,35 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F79A24',
     },
-    post: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent:'space-between',
-      color: 'red',
-      width:(Dimensions.get('window').width - 50),
-      backgroundColor: '#666666',
-      padding: 5,
-      margin: 2,
+    CameraPreview: {
+        backgroundColor: 'transparent',
+        flex: 1,
+        width: '100%',
+        height: '100%',
     },
-    postimg: {
-      width: (Dimensions.get('window').width - 70),
-      height: (Dimensions.get('window').width - 70),
+    Camera1: {
+        position: 'absolute',
+        bottom: 0,
+        flexDirection: 'row',
+        flex: 1,
+        paddingBottom: 10,
+        width: '100%',
+        justifyContent: 'space-between',
     },
-    posttitle: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      color: 'white',
+    Camera2: {
+        alignSelf: 'center',
+        flex: 1,
+        alignItems: 'center',
+    },
+    TakePics: {
+        width: 70,
+        height: 70,
+        bottom: 80,
+        right: (Dimensions.get('window').width / 4),
+        borderRadius: 50,
+        backgroundColor: '#fff',
+        borderColor: '#F79A24',
+        borderWidth: 5,
     }
 });
 
