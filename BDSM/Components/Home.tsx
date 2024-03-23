@@ -1,8 +1,6 @@
 import { View, Text } from "react-native"
 import { Camera } from 'expo-camera';
 
-import Map from "./Map";
-
 import styles from "../styles";
 import { useEffect, useState } from "react";
 import React from "react";
@@ -32,9 +30,7 @@ export default function Home() {
     }
 
     return (
-        <View style={styles.container}>
-            <Camera style={{ flex: 1 }} type={type}>
+            <Camera style={{ flex: 1 }}>
             </Camera>
-        </View>
     )
 }
