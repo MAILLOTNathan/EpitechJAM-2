@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -14,6 +14,8 @@ const styles = StyleSheet.create({
         marginTop:50,
         flexDirection: 'row',
         alignItems: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 10,
         padding: 20,
       },
       avatar: {
@@ -33,9 +35,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
       },
       stats: {
+        marginTop: (Dimensions.get('window').width / 18),
         flexDirection: 'row',
         alignItems: 'center',
         padding: 20,
+        width: (Dimensions.get('window').width),
       },
       stat: {
         flex: 1,
@@ -47,6 +51,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
       },
       statValue: {
+        color: '#cacaca',
         fontSize: 18,
       },
       bio: {
@@ -62,6 +67,27 @@ const styles = StyleSheet.create({
         padding: 20,
         margin: 5,
     },
+    mylongbutton: {
+      display: 'flex',
+      flexDirection: 'row',
+      backgroundColor: '#6666669f',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      borderRadius: 2,
+      padding: 20,
+      margin: 5,
+      width: (Dimensions.get('window').width - 20),
+  },
+    mylittlebutton: {
+      display: 'flex',
+      flexDirection: 'row',
+      backgroundColor: '#F79A24',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 50,
+      padding: 5,
+      margin: 5,
+    },
     navbar: {
         display: 'flex',
         flexDirection: 'row',
@@ -71,6 +97,30 @@ const styles = StyleSheet.create({
         marginHorizontal: 'auto',
         borderRadius: 5,
         padding: 10,
+    },
+    profil: {
+      position: 'absolute',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      top: (Dimensions.get('window').width / 6),
+      borderRadius: 5,
+      margin: 5,
+    },
+    panel: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      borderRadius: 5,
+      top: (Dimensions.get('window').width / 3),
+    },
+    notificationpanel: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      height: 550,
+      borderRadius: 5,
     },
     hud: {
         display: 'flex',
@@ -84,6 +134,29 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 20,
         fontWeight: 'bold',
+    },
+    mainView: {
+        flex: 1,
+        width: '150%',
+    },
+    childView: {
+        flex: 1,
+    },
+    textStyle: {
+        fontSize: 18,
+        marginBottom: 10,
+        color: 'white'
+    },
+    deepView: {
+        flex: 1,
+        backgroundColor: 'transparent',
+        flexDirection: 'row',
+    },
+    touchStyle: {
+        flex: 0.5,
+        alignSelf: 'flex-end',
+        alignItems: 'center',
+        backgroundColor: '#F79A24',
     },
 });
 
