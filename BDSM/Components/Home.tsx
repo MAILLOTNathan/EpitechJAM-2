@@ -20,10 +20,20 @@ export default function Home() {
         setCapturedImage(photo);
     }
 
+    async function __savepics() {
+        console.log('Photo saved')
+    }
+
+    async function __retakepics() {
+        setCapturedImage(null);
+        setPreviewVisible(false);
+    }
+
     const CameraPreview = ({photo}: any) => {
         console.log('photo', photo)
         return (
           <View style={styles.CameraPreview}>
+            <TouchableOpacity style={styles.touchStyle} onPress={__retakepics}/>
             <ImageBackground
               source={{uri: photo && photo.uri}}
               style={styles.childView}
@@ -33,7 +43,7 @@ export default function Home() {
       }
 
     return ( previewVisible && capturedImage ? (
-        <CameraPreview photo={capturedImage}></CameraPreview> ) : (
+        <CameraPreview photo={capturedImage} savepics={__savepics} retakepics={__retakepics}></CameraPreview> ) : (
         <View style={styles.mainView}>
             <Camera style={styles.childView} ref={(r) => {
                     if (r !== null)
