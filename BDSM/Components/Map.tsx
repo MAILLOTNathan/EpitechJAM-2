@@ -1,14 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Dimensions, StyleSheet, TouchableOpacity, View } from "react-native";
+import axios, { Axios, AxiosResponse } from 'axios';
 
 import MapView, { Marker } from "react-native-maps";
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { fa0, faGlobe, faMap } from "@fortawesome/free-solid-svg-icons";
 
+interface Icomment {
+    _id: string,
+    latitude: string,
+    longitude: string,
+    title: string,
+    description: string
+}
+
 export default function Map() {
     const [mapType, setMapType] = React.useState("standard");
     const [icon, setIcon] = React.useState(faGlobe);
+    const [markers, setMarker] = useState<Icomment[]>([]);
+
+    const getListOfData = async (): Promise<Icomment[]> => {
+        try {
+          const response = await axios.get<Icomment[]>("http://10.106.1.116:3000/comments");
+          return response.data;
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          throw new Error('Failed to fetch data');
+        }
+      };
+
+    useEffect( () => {
+        const fetchdata = async () => { try {
+            const ListOfData = await getListOfData();
+            setMarker(ListOfData)
+        }
+         catch(error) {
+            console.log(error)
+         }
+        }; fetchdata();
+    }, [] )
+    console.log(markers)
     return (
         <View style={styles.container}>
             <View
@@ -75,8 +107,8 @@ export default function Map() {
                     <Marker
                         key={index}
                         coordinate={{
-                            latitude: marker.latitude,
-                            longitude: marker.longitude,
+                            latitude: parseFloat(marker.latitude),
+                            longitude: parseFloat(marker.longitude),
                         }}
                         title={marker.title}
                         description={marker.description}
@@ -98,29 +130,6 @@ const styles = StyleSheet.create({
     },
 });
 
-const markers = [
-    {
-        latitude: -20.6653823,
-        longitude: 55.6592917,
-        title: "Hello 1",
-        description: "I'm here!",
-    },
-    {
-        latitude: -20.7653823,
-        longitude: 55.6592917,
-        title: "Hello 2",
-        description: "I'm here!",
-    },
-    {
-        latitude: -20.8653823,
-        longitude: 55.6592917,
-        title: "Guillaume a ouvert une porte",
-        description: "la daronne de benjo sur le parking",
-    },
-    {
-        latitude: -20.9653823,
-        longitude: 55.6592917,
-        title: "Hello 3",
-        description: "I'm here!",
-    },
-]
+
+
+
