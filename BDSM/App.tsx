@@ -7,6 +7,7 @@ import NavBar from './Components/NavBar';
 import Profil from './Components/Profil';
 import Home from './Components/Home';
 import Map from './Components/Map';
+import Notifications from './Components/Notifications';
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -38,6 +39,7 @@ export default function App() {
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Profil" component={Profil} />
         <Stack.Screen name="Map" component={Map} />
+        <Stack.Screen name="Notifications" component={Notifications} />
       </Stack.Navigator>
     </NavigationContainer>
   );

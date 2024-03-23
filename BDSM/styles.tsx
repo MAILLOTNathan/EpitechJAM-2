@@ -115,6 +115,13 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       top: (Dimensions.get('window').width / 3),
     },
+    notificationpanel: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      height: 550,
+      borderRadius: 5,
+    },
     hud: {
         display: 'flex',
         backgroundColor: '#F79A24',
@@ -130,6 +137,7 @@ const styles = StyleSheet.create({
     },
     mainView: {
         flex: 1,
+        width: '150%',
     },
     childView: {
         flex: 1,
@@ -148,6 +156,7 @@ const styles = StyleSheet.create({
         flex: 0.5,
         alignSelf: 'flex-end',
         alignItems: 'center',
+        backgroundColor: '#F79A24',
     },
 });
 

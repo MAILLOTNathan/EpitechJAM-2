@@ -10,7 +10,7 @@ import { faCamera } from '@fortawesome/free-solid-svg-icons';
 export default function NavBar({navigation}) {
     return (
         <View style={styles.navbar}>
-            <TouchableOpacity style={styles.mybutton}>
+            <TouchableOpacity style={styles.mybutton} onPress={() => navigation.navigate("Notifications")}>
                 <FontAwesomeIcon icon={faBell} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.mybutton}>
