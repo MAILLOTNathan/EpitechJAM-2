@@ -12,6 +12,7 @@ export default function Home() {
   
     if (!permission) {
       // Camera permissions are still loading
+      requestPermission();
       return <View />;
     }
   

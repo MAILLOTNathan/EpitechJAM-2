@@ -158,6 +158,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F79A24',
     },
+    post: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent:'space-between',
+      padding: 10,
+    }
 });
 
 export default styles;
