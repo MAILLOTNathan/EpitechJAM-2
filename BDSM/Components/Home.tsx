@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Alert, Dimensions, ImageBackground } from "react-native"
+import { View, Text, TouchableOpacity, Alert, Dimensions, ImageBackground, Button } from "react-native"
 import { Camera, CameraType, CameraPictureOptions, CameraOrientation, CameraProps } from 'expo-camera';
 
 import styles from "../styles";
@@ -33,11 +33,11 @@ export default function Home() {
         console.log('photo', photo)
         return (
           <View style={styles.CameraPreview}>
-            <TouchableOpacity style={styles.touchStyle} onPress={__retakepics}/>
             <ImageBackground
               source={{uri: photo && photo.uri}}
               style={styles.childView}
             />
+            <Button title={'retake'} onPress={__retakepics} />
           </View>
         )
       }
