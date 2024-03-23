@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
       },
       stats: {
+        marginTop: (Dimensions.get('window').width / 18),
         flexDirection: 'row',
         alignItems: 'center',
         padding: 20,
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
       },
       statValue: {
+        color: '#cacaca',
         fontSize: 18,
       },
       bio: {
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     mylongbutton: {
       display: 'flex',
       flexDirection: 'row',
-      backgroundColor: '#F79A24',
+      backgroundColor: '#6666669f',
       alignItems: 'center',
       justifyContent: 'space-between',
       borderRadius: 2,
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'space-around',
-      top: (Dimensions.get('window').width / 8),
+      top: (Dimensions.get('window').width / 6),
       borderRadius: 5,
       margin: 5,
     },
@@ -111,7 +113,7 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       alignItems: 'center',
       borderRadius: 5,
-      top: (Dimensions.get('window').width / 2),
+      top: (Dimensions.get('window').width / 3),
     },
     hud: {
         display: 'flex',
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     touchStyle: {
-        flex: 0.1,
+        flex: 0.5,
         alignSelf: 'flex-end',
         alignItems: 'center',
     },
