@@ -9,14 +9,18 @@ export default function Home() {
 
     let camera = Camera;
 
-    useEffect(() => {
-        (async () => {
-            const { status } = await Camera.requestCameraPermissionsAsync();
-            if (status !== 'granted') {
-                Alert.alert('Permission to camera was denied');
-            }
-        })();
-    }, []);
+    const __startCamera = async () => {
+        const { status } = await camera.getCameraPermissionsAsync();
+        if (status === 'granted') {
+            launchCamera();
+        } else {
+            Alert.alert('Access to camera has been denied');
+        }
+    }
+
+    const launchCamera = async () => {
+        
+    }
 
     const __takePicture = async () => {
         if (!camera) return;
