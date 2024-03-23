@@ -45,7 +45,6 @@ export default function Home() {
     return ( previewVisible && capturedImage ? (
         <CameraPreview photo={capturedImage}></CameraPreview> ) : (
         <View style={styles.mainView}>
-            import CameraPreview from "./CameraPreview";
             <Camera style={styles.childView}
                 ref={(r) => {
                     if (r !== null)
