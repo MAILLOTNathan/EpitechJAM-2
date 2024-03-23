@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -14,6 +14,8 @@ const styles = StyleSheet.create({
         marginTop:50,
         flexDirection: 'row',
         alignItems: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 10,
         padding: 20,
       },
       avatar: {
@@ -36,6 +38,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         padding: 20,
+        width: (Dimensions.get('window').width),
       },
       stat: {
         flex: 1,
@@ -62,6 +65,16 @@ const styles = StyleSheet.create({
         padding: 20,
         margin: 5,
     },
+    mylittlebutton: {
+      display: 'flex',
+      flexDirection: 'row',
+      backgroundColor: '#F79A24',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 50,
+      padding: 5,
+      margin: 5,
+    },
     navbar: {
         display: 'flex',
         flexDirection: 'row',
@@ -71,6 +84,15 @@ const styles = StyleSheet.create({
         marginHorizontal: 'auto',
         borderRadius: 5,
         padding: 10,
+    },
+    profil: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+      top: -(Dimensions.get('window').width / 2),
+      borderRadius: 5,
+      margin: 5,
     },
     hud: {
         display: 'flex',
