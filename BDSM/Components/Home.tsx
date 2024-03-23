@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Alert, Dimensions } from "react-native"
+import { View, Text, TouchableOpacity, Alert, Dimensions, ImageBackground } from "react-native"
 import { Camera, CameraType, CameraPictureOptions, CameraOrientation, CameraProps } from 'expo-camera';
 
 import styles from "../styles";
@@ -7,20 +7,45 @@ import React from "react";
 
 export default function Home() {
 
+    const [previewVisible, setPreviewVisible] = useState(false)
+    const [capturedImage, setCapturedImage] = useState<any>(null)
+
     let camera: Camera;
-    let cameraOpt: CameraPictureOptions = {};
-    let cameraProps: CameraProps = {};
 
     async function __takePicture() {
-        cameraProps.onCameraReady = async () => {
-            Camera.isAvailableAsync()
-            let photo = await camera.takePictureAsync(cameraOpt);
-            Alert.alert('Photo', JSON.stringify(photo));
+        camera._onCameraReady = async () => {
+            let photo = await camera.takePictureAsync();
+            console.log(photo);
+            setPreviewVisible(true);
+            setCapturedImage(photo);
         }
     }
 
-    return (
+    const CameraPreview = ({photo}: any) => {
+        console.log('sdsfds', photo)
+        return (
+          <View
+            style={{
+              backgroundColor: 'transparent',
+              flex: 1,
+              width: '100%',
+              height: '100%'
+            }}
+          >
+            <ImageBackground
+              source={{uri: photo && photo.uri}}
+              style={{
+                flex: 1
+              }}
+            />
+          </View>
+        )
+      }
+
+    return ( previewVisible && capturedImage ? (
+        <CameraPreview photo={capturedImage}></CameraPreview> ) : (
         <View style={styles.mainView}>
+            import CameraPreview from "./CameraPreview";
             <Camera style={styles.childView}
                 ref={(r) => {
                     if (r !== null)
@@ -62,5 +87,6 @@ export default function Home() {
                 </View>
             </Camera>
         </View>
+        )
     )
 }
