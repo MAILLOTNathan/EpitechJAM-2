@@ -13,12 +13,11 @@ export default function Home() {
     let camera: Camera;
 
     async function __takePicture() {
-        camera._onCameraReady = async () => {
-            let photo = await camera.takePictureAsync();
-            console.log(photo);
-            setPreviewVisible(true);
-            setCapturedImage(photo);
-        }
+        if (!camera) return;
+        let photo = await camera.takePictureAsync();
+        console.log(photo);
+        setPreviewVisible(true);
+        setCapturedImage(photo);
     }
 
     const CameraPreview = ({photo}: any) => {
