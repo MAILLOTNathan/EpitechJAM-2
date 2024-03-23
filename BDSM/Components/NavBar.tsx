@@ -22,7 +22,7 @@ export default function NavBar({navigation}) {
             <TouchableOpacity style={styles.mybutton} onPress={() => navigation.navigate("Home")}>
                 <FontAwesomeIcon icon={faCamera} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.mybutton}>
+            <TouchableOpacity style={styles.mybutton} onPress={() => navigation.navigate("Map")}>
                 <FontAwesomeIcon icon={faMap} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.mybutton} onPress={() => navigation.navigate("Profil")}>
