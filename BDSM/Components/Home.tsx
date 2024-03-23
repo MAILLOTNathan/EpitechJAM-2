@@ -12,7 +12,6 @@ export default function Home() {
     let x = false;
     let d = Camera.Constants.Type;
     const [hasPermission, setHasPermission] = useState(x);
-    const [type, setType] = useState(d);
 
     useEffect(() => {
         (async () => {
@@ -32,8 +31,10 @@ export default function Home() {
     }
 
     return (
-        <View style={styles.container}>
-            <Camera style={{ flex: 1 }} type={type}>
+        <View style={styles.mainView}>
+            <Camera style={styles.childView}>
+                <View style={styles.deepView}>
+                </View>
             </Camera>
         </View>
     )
