@@ -4,8 +4,8 @@ import styles from '../styles';
 
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
-import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
-import { faCamera } from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faQuestion, faGear } from '@fortawesome/free-solid-svg-icons';
 
 export default function Profil() {
 
@@ -51,6 +51,26 @@ export default function Profil() {
                         </View>
                     ))}
                 </View>
+            </View>
+            <View style={styles.panel}>
+                <TouchableOpacity style={styles.mylongbutton}>
+                    <Text>
+                        Help
+                    </Text>
+                    <FontAwesomeIcon icon={faQuestion} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.mylongbutton}>
+                    <Text>
+                        Preferences
+                    </Text>
+                    <FontAwesomeIcon icon={faGear} />
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.mylongbutton}>
+                    <Text>
+                        About
+                    </Text>
+                    <FontAwesomeIcon icon={faEnvelope} />
+                </TouchableOpacity>
             </View>
         </View>
     );
