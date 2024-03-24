@@ -50,13 +50,14 @@ app.get('/comments',  (req, res) => {
    .catch((error) => {return res.status(400).json({error})});});
 
 app.post('/post', (req, res) => {
-  const newComment = new commentModel(req.body)
+  const newComment = new Post(req.body)
+  console.log(newComment)
   newComment.save().then((newComment) => {
      return res.status(201).json(newComment)
   })
   .catch((error) => {return res.status(400).json({error})})});
 
-  app.get('/post',  (req, res) => {
+app.get('/post',  (req, res) => {
     Post.find()
     .then((hu) => {return res.status(200).json(hu)})
     .catch((error) => {return res.status(400).json({error})});});
