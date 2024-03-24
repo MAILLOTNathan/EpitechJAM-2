@@ -207,7 +207,27 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderColor: '#F79A24',
         borderWidth: 5,
-    }
+    },
+    caminterface: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      position: 'absolute',
+      justifyContent:'space-around',
+      top: (Dimensions.get('window').height - 150),
+      width: (Dimensions.get('window').width),
+    },
+    publish: {
+      flex: 1,
+      backgroundColor: '#1e1e1e',
+      alignItems: 'center',
+      justifyContent: 'space-around',
+    },
+    pubimg: {
+      width: (Dimensions.get('window').width / 5),
+      height: (Dimensions.get('window').height / 5),
+      borderRadius: 5,
+    },
 });
 
 export default styles;
