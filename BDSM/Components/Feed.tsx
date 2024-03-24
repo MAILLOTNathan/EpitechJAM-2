@@ -1,25 +1,25 @@
 import { View, Text, Image, ScrollView, Touchable, Dimensions } from "react-native";
-
+import { useState, useEffect } from "react";
 import styles from "../styles";
+import axios from "axios";
+import { Alert } from "react-native";
 
-const feed = [
+interface  Ifeed
     {
-        user_name: "John",
-        content: "This is a door",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMRgxjtjYT2tA88LTt_f6r_GXfMFLKNNQ53MwqU_uIFA&s",
-    },
-    {
-        user_name: "Oui",
-        content: "This is a kbo",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMRgxjtjYT2tA88LTt_f6r_GXfMFLKNNQ53MwqU_uIFA&s",
-    }
-];
+        user_name: string,
+        content: string,
+        url: string
+    };
 
-function createFeed (data) {
-    return data.map((item) => {
+
+
+function createFeed (data: Ifeed[]) {
+
+
+    return data.map((item: any) => {
         return (
             <View style={styles.post}>
-                <Image style={styles.postimg} source={{ uri: item.image }}/>
+                <Image style={styles.postimg} source={{ uri: item.url }}/>
                 <View style={
                     {
                         display: 'flex',
@@ -40,6 +40,30 @@ function createFeed (data) {
 
 
 export default function Feed () {
+
+    const [feed, setFeed] = useState<Ifeed[]>([]);
+
+const getDatabaseEntry = async (): Promise<Ifeed[]> => {
+    try {
+      const response = await axios.get<Ifeed[]>('http://10.106.1.24:3000/post');
+        console.log('Database entry created:', response.data)
+         return response.data
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        throw new Error('Failed to fetch data');
+    }
+  };
+
+  useEffect( () => {
+    const fetchdata = async () => { try {
+        const ListOfData = await getDatabaseEntry();
+        setFeed(ListOfData)
+    }
+     catch(error) {
+        console.log(error)
+     }
+    }; fetchdata();
+}, [] )
 
     return (
         <View style={styles.container}>
