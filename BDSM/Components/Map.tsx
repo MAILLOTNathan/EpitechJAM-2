@@ -22,7 +22,7 @@ export default function Map() {
 
     const getListOfData = async (): Promise<Icomment[]> => {
         try {
-          const response = await axios.get<Icomment[]>("http://10.106.1.116:3000/comments");
+          const response = await axios.get<Icomment[]>("http://10.106.1.24:3000/comments");
           return response.data;
         } catch (error) {
           console.error('Error fetching data:', error);

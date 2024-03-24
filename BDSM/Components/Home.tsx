@@ -4,17 +4,35 @@ import { Camera, CameraType, CameraPictureOptions, CameraOrientation, CameraProp
 import styles from "../styles";
 import { useEffect, useState } from "react";
 import React from "react";
+import axios from "axios";
 
 export default function Home() {
 
+    const [url, setUrl] = useState('');
+
+    const createDatabaseEntry = async () => {
+      try {
+        const response = await axios.post('http://10.106.1.24:3000/post', {
+            user_name: "ajax",
+            url: url,
+            content: "c'est une photo"
+        });
+          console.log('Database entry created:', response.data);
+        Alert.alert('Success', 'Database entry created successfully');
+      } catch (error) {
+        console.error('Error creating database entry:', error);
+        Alert.alert('Error', 'Failed to create database entry');
+      }
+    };
+
     const [previewVisible, setPreviewVisible] = useState(false)
     const [capturedImage, setCapturedImage] = useState<any>(null)
-
+    let photo : any;
     let camera: Camera;
 
     async function __takePicture() {
         if (!camera) return;
-        let photo = await camera.takePictureAsync();
+        photo = await camera.takePictureAsync();
         console.log(photo);
         setPreviewVisible(true);
         setCapturedImage(photo);
@@ -22,6 +40,8 @@ export default function Home() {
 
     async function __savepics() {
         console.log('Photo saved')
+        setUrl(photo.uri)
+        createDatabaseEntry
     }
 
     async function __retakepics() {
