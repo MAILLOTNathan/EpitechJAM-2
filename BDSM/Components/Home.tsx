@@ -8,7 +8,12 @@ import axios from "axios";
 
 export default function Home() {
 
-    const [url, setUrl] = useState('');
+    let url: string;
+
+
+    async function setUrl (oui: string) {
+        url = oui;
+    }
 
     const createDatabaseEntry = async () => {
       try {
@@ -27,21 +32,23 @@ export default function Home() {
 
     const [previewVisible, setPreviewVisible] = useState(false)
     const [capturedImage, setCapturedImage] = useState<any>(null)
-    let photo : any;
     let camera: Camera;
 
     async function __takePicture() {
+        let photo : any;
         if (!camera) return;
         photo = await camera.takePictureAsync();
-        console.log(photo);
         setPreviewVisible(true);
         setCapturedImage(photo);
+        __savepics(photo);
     }
 
-    async function __savepics() {
+    async function __savepics(photo) {
         console.log('Photo saved')
-        setUrl(photo.uri)
-        createDatabaseEntry
+        await setUrl(photo.uri)
+        console.log('uri : ' + photo.uri)
+        console.log(url)
+        createDatabaseEntry()
     }
 
     async function __retakepics() {
